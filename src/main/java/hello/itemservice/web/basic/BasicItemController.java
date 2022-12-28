@@ -54,6 +54,10 @@ public class BasicItemController {
         return "basic/item";
     }
 
+    /**
+        @ModelAttribute("item") Item item
+        model.addAttribute("item", item); 자동 추가
+     */
     //@PostMapping("/add")
     public String addItemV2(@ModelAttribute("item") Item item, Model model) {
         itemRepository.save(item);
@@ -62,12 +66,21 @@ public class BasicItemController {
         return "basic/item";
     }
 
+    /**
+        @ModelAttribute name 생략 가능
+        model.addAttribute("item", item); 자동 추가, 생략 가능
+        생략 시 model에 저장되는 name은 클래스명 첫글자만 소문자로 등록 Item → item
+     */
     //@PostMapping("/add")
     public String addItemV3(@ModelAttribute Item item) {
         itemRepository.save(item);
         return "basic/item";
     }
 
+    /**
+        @ModelAttribute 자체 생략 가능
+        model.addAttribute("item", item); 자동 추가
+     */
     //@PostMapping("/add")
     public String addItemV4(Item item) {
         itemRepository.save(item);
